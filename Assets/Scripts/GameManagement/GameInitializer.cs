@@ -1,4 +1,5 @@
 ﻿using System;
+using PotatoFinch.LudumDare55.GameEvents;
 using PotatoFinch.LudumDare55.Ingredients;
 using PotatoFinch.LudumDare55.Orders;
 using PotatoFinch.LudumDare55.UiComponents;
@@ -15,6 +16,8 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 		private void Awake() {
 			Random random = new Random(1 + (uint)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds());
 			random.NextInt(5);
+			
+			GameEventManager.Initialize();
 			
 			IngredientDefinitionHolder ingredientDefinitionHolder = new IngredientDefinitionHolder(_ingredientDefinitions);
 			OrderManager.Initialize(ingredientDefinitionHolder, random);

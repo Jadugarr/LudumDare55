@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PotatoFinch.LudumDare55.GameEvents;
 using PotatoFinch.LudumDare55.Ingredients;
 using Unity.Mathematics;
 using Random = Unity.Mathematics.Random;
@@ -35,6 +36,7 @@ namespace PotatoFinch.LudumDare55.Orders {
 			}
 
 			_currentOrder = new OrderedDrink(orderedIngredients);
+			GameEventManager.Instance.SendEvent(new NewOrderCreatedEvent { NewOrder = _currentOrder });
 			return _currentOrder;
 		}
 

@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using PotatoFinch.LudumDare55.Extensions;
 using PotatoFinch.LudumDare55.Ingredients;
 using PotatoFinch.LudumDare55.Orders;
-using PotatoFinch.LudumDare55.UiComponents;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = Unity.Mathematics.Random;
 
 namespace PotatoFinch.LudumDare55.GameManagement {
 	public class GameManagerBehaviour : MonoBehaviour {
-		[SerializeField] private RequiredOrderDisplayBehaviour _requiredOrderDisplayBehaviour;
-
 		public static GameManagerBehaviour Instance => _instance;
 		private static GameManagerBehaviour _instance;
 
@@ -33,8 +30,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 		}
 
 		private void GetNewOrder() {
-			var generatedOrder = OrderManager.Instance.GenerateOrder();
-			_requiredOrderDisplayBehaviour.ShowRequiredOrder(generatedOrder);
+			OrderManager.Instance.GenerateOrder();
 		}
 
 		private void Awake() {

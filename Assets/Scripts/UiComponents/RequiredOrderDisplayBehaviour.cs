@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PotatoFinch.LudumDare55.GameEvents;
 using PotatoFinch.LudumDare55.Ingredients;
 using PotatoFinch.LudumDare55.Orders;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace PotatoFinch.LudumDare55.UiComponents {
 		
 		public void Initialize(IngredientDefinitionHolder ingredientDefinitionHolder) {
 			_ingredientDefinitionHolder = ingredientDefinitionHolder;
+			
+			GameEventManager.Instance.AddListener<NewOrderCreatedEvent>(OnNewOrderCreated);
 		}
 
 		public void ShowRequiredOrder(OrderedDrink orderedDrink) {
@@ -52,6 +55,10 @@ namespace PotatoFinch.LudumDare55.UiComponents {
 					ingredientDefinition.IngredientPrefab.ReleaseInstance(spawnedIngredientObject);
 				}
 			}
+		}
+
+		private void OnNewOrderCreated(NewOrderCreatedEvent newOrderEventData) {
+			ShowRequiredOrder(newOrderEventData.NewOrder);
 		}
 	}
 }
