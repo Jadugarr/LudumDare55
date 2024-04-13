@@ -15,11 +15,16 @@ MonoBehaviour:
   _difficulties:
   - NeededIngredients: 1
     SuccessfulDrinksToClear: 3
+    TimeLimit: 10
   - NeededIngredients: 2
     SuccessfulDrinksToClear: 5
+    TimeLimit: 8
   - NeededIngredients: 3
     SuccessfulDrinksToClear: 5
+    TimeLimit: 6
   - NeededIngredients: 4
     SuccessfulDrinksToClear: 5
+    TimeLimit: 5
   - NeededIngredients: 5
     SuccessfulDrinksToClear: 10
+    TimeLimit: 3

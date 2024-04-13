@@ -9,6 +9,8 @@ namespace PotatoFinch.LudumDare55.Orders {
 	public class OrderManager {
 		public static OrderManager Instance { get; private set; }
 
+		public DifficultyData CurrentDifficulty => _currentDifficulty;
+
 		private DifficultyDefinition _difficultyDefinition;
 		
 		private Random _random;

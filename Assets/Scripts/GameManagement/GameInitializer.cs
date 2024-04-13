@@ -14,13 +14,14 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 
 		[SerializeField] private RequiredOrderDisplayBehaviour _requiredOrderDisplayBehaviour;
 		[SerializeField] private DifficultyDefinition _difficultyDefinition;
+		[SerializeField] private OrderTimeLimitBehaviour _orderTimeLimitBehaviour;
 
 		private void Awake() {
 			Random random = new Random(1 + (uint)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds());
 			random.NextInt(5);
 			
 			GameEventManager.Initialize();
-			
+			_orderTimeLimitBehaviour.Initialize();
 			IngredientDefinitionHolder ingredientDefinitionHolder = new IngredientDefinitionHolder(_ingredientDefinitions);
 			OrderManager.Initialize(random, _difficultyDefinition);
 			

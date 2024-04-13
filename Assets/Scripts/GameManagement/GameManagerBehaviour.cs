@@ -19,6 +19,8 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 
 		private List<IngredientType> _currentIngredients = new();
 
+		private bool _gameRunning;
+
 		public void StartGame() {
 			_inputActions = new SummoningGameInput();
 			_inputActions.Enable();
@@ -27,6 +29,8 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 
 			RandomizeIngredientInputs();
 			GetNewOrder();
+
+			_gameRunning = true;
 		}
 
 		private void GetNewOrder() {

@@ -5,5 +5,6 @@ namespace PotatoFinch.LudumDare55.Difficulty {
 	public struct DifficultyData {
 		public int NeededIngredients;
 		public int SuccessfulDrinksToClear;
+		public float TimeLimit;
 	}
 }
