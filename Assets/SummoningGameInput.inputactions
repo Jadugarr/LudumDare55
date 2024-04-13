@@ -1,5 +1,5 @@
 {
-    "name": "InputActions",
+    "name": "SummoningGameInput",
     "maps": [
         {
             "name": "Summoning",
@@ -45,6 +45,15 @@
                     "name": "DiscardIngredients",
                     "type": "Button",
                     "id": "f760100e-214f-43e6-836a-9ff810ec15e5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheckOrder",
+                    "type": "Button",
+                    "id": "d822a6eb-b5f6-4ade-a8b8-692cdf79ccda",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -104,6 +113,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DiscardIngredients",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa03f6a0-c498-4431-93bc-5569ac05bde5",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckOrder",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -39,7 +39,7 @@ namespace PotatoFinch.LudumDare55.Orders {
 		}
 
 		public bool CheckOrder(OrderedDrink generatedDrink) {
-			return _currentOrder.Equals(generatedDrink);
+			return _currentOrder.IsSameDrink(generatedDrink);
 		}
 
 		public void ChangeDifficulty(int ingredientAmountChange) {

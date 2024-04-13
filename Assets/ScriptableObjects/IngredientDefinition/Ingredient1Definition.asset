@@ -17,5 +17,10 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  _ingredientUiPrefab:
+    m_AssetGUID: 8fc07424517290848a606e9353b95315
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _ingredientType: 0
   _localizationKey: {fileID: 11400000, guid: c3e166e853859a040a20d5a9a54e8c6e, type: 2}

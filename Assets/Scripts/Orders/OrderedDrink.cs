@@ -11,12 +11,12 @@ namespace PotatoFinch.LudumDare55.Orders {
 			_ingredientTypes = ingredientTypes;
 		}
 
-		public bool Equals(OrderedDrink drink, OrderedDrink otherDrink) {
-			if (drink == null || otherDrink == null) {
+		public bool IsSameDrink(OrderedDrink otherDrink) {
+			if (otherDrink == null) {
 				return false;
 			}
 			
-			if (drink.IngredientTypes.Count != otherDrink.IngredientTypes.Count) {
+			if (IngredientTypes.Count != otherDrink.IngredientTypes.Count) {
 				return false;
 			}
 
