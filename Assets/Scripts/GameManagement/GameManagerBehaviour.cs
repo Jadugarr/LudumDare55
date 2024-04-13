@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using PotatoFinch.LudumDare55.Extensions;
+using PotatoFinch.LudumDare55.GameEvents;
 using PotatoFinch.LudumDare55.Ingredients;
 using PotatoFinch.LudumDare55.Orders;
 using UnityEngine;
@@ -16,7 +17,6 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 
 		private Random _random;
 		private List<IngredientType> _randomizedIngredientTypeList;
-
 		private List<IngredientType> _currentIngredients = new();
 
 		private bool _gameRunning;
@@ -52,6 +52,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			_inputActions.Summoning.Ingredient4.performed += OnIngredient4Performed;
 			_inputActions.Summoning.DiscardIngredients.performed += OnDiscardPerformed;
 			_inputActions.Summoning.CheckOrder.performed += OnCheckOrderPerformed;
+			GameEventManager.Instance.AddListener<GameLostEvent>(OnGameLostEvent);
 		}
 
 		private void RemoveListeners() {
@@ -60,6 +61,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			_inputActions.Summoning.Ingredient3.performed -= OnIngredient3Performed;
 			_inputActions.Summoning.Ingredient4.performed -= OnIngredient4Performed;
 			_inputActions.Summoning.DiscardIngredients.performed -= OnDiscardPerformed;
+			GameEventManager.Instance.RemoveListener<GameLostEvent>(OnGameLostEvent);
 		}
 
 		private void RandomizeIngredientInputs() {
@@ -90,11 +92,19 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 		}
 
 		private void DiscardDrink() {
+			if (!_gameRunning) {
+				return;
+			}
+			
 			IngredientSpawner.Instance.DespawnAllIngredientObjects();
 			_currentIngredients.Clear();
 		}
 
 		public void SpawnIngredientWithIndex(int index) {
+			if (!_gameRunning) {
+				return;
+			}
+			
 			var randomizedIngredientType = _randomizedIngredientTypeList[index];
 			_currentIngredients.Add(randomizedIngredientType);
 			IngredientSpawner.Instance.SpawnIngredientObjectAsync(randomizedIngredientType);
@@ -110,6 +120,10 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			}
 			
 			GetNewOrder();
+		}
+
+		private void OnGameLostEvent(GameLostEvent _) {
+			_gameRunning = false;
 		}
 	}
 }

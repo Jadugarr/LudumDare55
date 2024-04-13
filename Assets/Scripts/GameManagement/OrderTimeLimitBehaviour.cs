@@ -10,6 +10,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 		private float _totalTime;
 		private float _currentTime;
 		private bool _gameRunning;
+		private GameLostEvent _gameLostEvent = new();
 
 		public void Initialize() {
 			GameEventManager.Instance.AddListener<NewOrderCreatedEvent>(OnNewOrderCreated);
@@ -27,7 +28,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			}
 
 			if (_currentTime >= _totalTime) {
-				Debug.Log("Game lost!");
+				GameEventManager.Instance.SendEvent(_gameLostEvent);
 				_gameRunning = false;
 			}
 
