@@ -1,0 +1,114 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "Summoning",
+            "id": "158b37e0-357d-4e65-8fcc-f46dc55ecddb",
+            "actions": [
+                {
+                    "name": "Ingredient1",
+                    "type": "Button",
+                    "id": "62e7df3a-0da1-4748-87f5-37d077ed47b8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ingredient2",
+                    "type": "Button",
+                    "id": "2c509e1d-eb99-4850-9e8b-9a379ffa94d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ingredient3",
+                    "type": "Button",
+                    "id": "c2771e26-38e6-41e2-a596-78ab6556252e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ingredient4",
+                    "type": "Button",
+                    "id": "0a994140-550a-4cdb-b07c-20d7a82dec61",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DiscardIngredients",
+                    "type": "Button",
+                    "id": "f760100e-214f-43e6-836a-9ff810ec15e5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2f4cc7d1-47e6-46f0-8fb4-7e94f42d25f4",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ingredient1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0680d87-5f85-47b0-99ac-294788ccbb37",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ingredient2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ecfee94-9d99-430f-a084-50860acc1c60",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ingredient3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3bc58f6-6689-4ead-9dbf-242e4b7526f3",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ingredient4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "990d8fab-c956-48e8-9454-ff2a5d07da91",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DiscardIngredients",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

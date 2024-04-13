@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f816d94d60134e9d9cffafd1dbcd177d, type: 3}
+  m_Name: Ingredient4Name
+  m_EditorClassIdentifier: 
+  _localizationDatas:
+  - _languageCode: 0
+    _text: Ingredient 4
+  - _languageCode: 1
+    _text: Zutat 4
