@@ -105,7 +105,6 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 				return;
 			}
 			
-			OrderManager.Instance.ChangeDifficulty(1);
 			GetNewOrder();
 		}
 	}

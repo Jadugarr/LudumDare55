@@ -265,7 +265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd68e6fa532b41e39a32b77a8065dd57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requiredOrderDisplayBehaviour: {fileID: 726874301}
 --- !u!4 &1023844768
 Transform:
   m_ObjectHideFlags: 0
@@ -731,6 +730,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f65685427ef872b46ad68e4c13b24190, type: 2}
   _ingredientSpawnPoint: {fileID: 577903879}
   _requiredOrderDisplayBehaviour: {fileID: 726874301}
+  _difficultyDefinition: {fileID: 11400000, guid: ba1967dfa5f4cfa4caf2151f54f05af1,
+    type: 2}
 --- !u!1 &1664350552
 GameObject:
   m_ObjectHideFlags: 0

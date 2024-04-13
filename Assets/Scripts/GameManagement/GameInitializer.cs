@@ -1,4 +1,5 @@
 ﻿using System;
+using PotatoFinch.LudumDare55.Difficulty;
 using PotatoFinch.LudumDare55.GameEvents;
 using PotatoFinch.LudumDare55.Ingredients;
 using PotatoFinch.LudumDare55.Orders;
@@ -12,6 +13,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 		[SerializeField] private Transform _ingredientSpawnPoint;
 
 		[SerializeField] private RequiredOrderDisplayBehaviour _requiredOrderDisplayBehaviour;
+		[SerializeField] private DifficultyDefinition _difficultyDefinition;
 
 		private void Awake() {
 			Random random = new Random(1 + (uint)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds());
@@ -20,7 +22,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			GameEventManager.Initialize();
 			
 			IngredientDefinitionHolder ingredientDefinitionHolder = new IngredientDefinitionHolder(_ingredientDefinitions);
-			OrderManager.Initialize(ingredientDefinitionHolder, random);
+			OrderManager.Initialize(random, _difficultyDefinition);
 			
 			IngredientSpawner.Initialize(_ingredientSpawnPoint.position, ingredientDefinitionHolder);
 			
