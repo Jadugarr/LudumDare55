@@ -20,8 +20,12 @@ namespace PotatoFinch.LudumDare55.Orders {
 				return false;
 			}
 
-			foreach (var ingredientType in IngredientTypes) {
-				if (!otherDrink.IngredientTypes.Contains(ingredientType)) {
+			List<IngredientType> tempList = new List<IngredientType>(_ingredientTypes);
+			
+			foreach (var ingredientType in otherDrink.IngredientTypes) {
+				var couldRemove = tempList.Remove(ingredientType);
+
+				if (!couldRemove) {
 					return false;
 				}
 			}

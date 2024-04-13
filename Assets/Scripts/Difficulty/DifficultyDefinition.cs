@@ -7,18 +7,20 @@ namespace PotatoFinch.LudumDare55.Difficulty {
 
 		public DifficultyData[] Difficulties => _difficulties;
 
-		public DifficultyData GetDifficultyDataBySuccessfulDrinkAmount(int successfulDrinks) {
+		public bool TryGetDifficultyDataBySuccessfulDrinkAmount(int successfulDrinks, out DifficultyData difficultyData) {
+			difficultyData = default;
 			int remainingDrinks = successfulDrinks;
 
 			foreach (var currentDifficulty in _difficulties) {
 				remainingDrinks -= currentDifficulty.SuccessfulDrinksToClear;
 
 				if (remainingDrinks < 0) {
-					return currentDifficulty;
+					difficultyData = currentDifficulty;
+					return true;
 				}
 			}
 
-			return _difficulties[^1];
+			return false;
 		}
 	}
 }

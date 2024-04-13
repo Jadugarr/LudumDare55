@@ -14,6 +14,11 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 
 		public void Initialize() {
 			GameEventManager.Instance.AddListener<NewOrderCreatedEvent>(OnNewOrderCreated);
+			GameEventManager.Instance.AddListener<GameWonEvent>(OnGameWonEvent);
+		}
+
+		private void OnGameWonEvent(GameWonEvent _) {
+			_gameRunning = false;
 		}
 
 		private void OnNewOrderCreated(NewOrderCreatedEvent _) {

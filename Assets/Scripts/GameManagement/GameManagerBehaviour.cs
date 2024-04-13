@@ -53,6 +53,8 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			_inputActions.Summoning.DiscardIngredients.performed += OnDiscardPerformed;
 			_inputActions.Summoning.CheckOrder.performed += OnCheckOrderPerformed;
 			GameEventManager.Instance.AddListener<GameLostEvent>(OnGameLostEvent);
+			GameEventManager.Instance.AddListener<GameWonEvent>(OnGameWonEvent);
+			GameEventManager.Instance.AddListener<RestartGameEvent>(OnGameRestartEvent);
 		}
 
 		private void RemoveListeners() {
@@ -62,6 +64,8 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			_inputActions.Summoning.Ingredient4.performed -= OnIngredient4Performed;
 			_inputActions.Summoning.DiscardIngredients.performed -= OnDiscardPerformed;
 			GameEventManager.Instance.RemoveListener<GameLostEvent>(OnGameLostEvent);
+			GameEventManager.Instance.RemoveListener<GameWonEvent>(OnGameWonEvent);
+			GameEventManager.Instance.RemoveListener<RestartGameEvent>(OnGameRestartEvent);
 		}
 
 		private void RandomizeIngredientInputs() {
@@ -124,6 +128,17 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 
 		private void OnGameLostEvent(GameLostEvent _) {
 			_gameRunning = false;
+		}
+
+		private void OnGameWonEvent(GameWonEvent _) {
+			_gameRunning = false;
+		}
+
+		private void OnGameRestartEvent(RestartGameEvent _) {
+			_gameRunning = true;
+			DiscardDrink();
+			OrderManager.Instance.Reset();
+			OrderManager.Instance.GenerateOrder();
 		}
 	}
 }
