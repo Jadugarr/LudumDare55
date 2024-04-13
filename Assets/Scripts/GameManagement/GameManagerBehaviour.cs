@@ -31,6 +31,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			_inputActions.Summoning.Ingredient2.performed += OnIngredient2Performed;
 			_inputActions.Summoning.Ingredient3.performed += OnIngredient3Performed;
 			_inputActions.Summoning.Ingredient4.performed += OnIngredient4Performed;
+			_inputActions.Summoning.DiscardIngredients.performed += OnDiscardPerformed;
 		}
 
 		private void RemoveListeners() {
@@ -38,6 +39,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			_inputActions.Summoning.Ingredient2.performed -= OnIngredient2Performed;
 			_inputActions.Summoning.Ingredient3.performed -= OnIngredient3Performed;
 			_inputActions.Summoning.Ingredient4.performed -= OnIngredient4Performed;
+			_inputActions.Summoning.DiscardIngredients.performed -= OnDiscardPerformed;
 		}
 
 		private void RandomizeIngredientInputs() {
@@ -61,6 +63,10 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 
 		private void OnIngredient4Performed(InputAction.CallbackContext _) {
 			IngredientSpawner.Instance.SpawnIngredientObjectAsync(_randomizedIngredientTypeList[3]);
+		}
+
+		private void OnDiscardPerformed(InputAction.CallbackContext _) {
+			IngredientSpawner.Instance.DespawnAllIngredientObjects();
 		}
 	}
 }
