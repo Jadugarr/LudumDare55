@@ -8,16 +8,20 @@ using Random = Unity.Mathematics.Random;
 
 namespace PotatoFinch.LudumDare55.GameManagement {
 	public class GameManagerBehaviour : MonoBehaviour {
+		public static GameManagerBehaviour Instance => _instance;
+		private static GameManagerBehaviour _instance;
+
 		private SummoningGameInput _inputActions;
 
 		private Random _random;
 		private List<IngredientType> _randomizedIngredientTypeList;
 
 		private void Awake() {
+			_instance = this;
 			_inputActions = new SummoningGameInput();
 			_inputActions.Enable();
 			_random = new Random(1 + (uint)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds());
-			
+
 			RandomizeIngredientInputs();
 			AddListeners();
 		}
@@ -45,28 +49,32 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 		private void RandomizeIngredientInputs() {
 			IngredientType[] values = Enum.GetValues(typeof(IngredientType)) as IngredientType[];
 			_randomizedIngredientTypeList = new List<IngredientType>(values);
-			
+
 			_randomizedIngredientTypeList.Shuffle(_random);
 		}
 
 		private void OnIngredient1Performed(InputAction.CallbackContext _) {
-			IngredientSpawner.Instance.SpawnIngredientObjectAsync(_randomizedIngredientTypeList[0]);
+			SpawnIngredientWithIndex(0);
 		}
 
 		private void OnIngredient2Performed(InputAction.CallbackContext _) {
-			IngredientSpawner.Instance.SpawnIngredientObjectAsync(_randomizedIngredientTypeList[1]);
+			SpawnIngredientWithIndex(1);
 		}
 
 		private void OnIngredient3Performed(InputAction.CallbackContext _) {
-			IngredientSpawner.Instance.SpawnIngredientObjectAsync(_randomizedIngredientTypeList[2]);
+			SpawnIngredientWithIndex(2);
 		}
 
 		private void OnIngredient4Performed(InputAction.CallbackContext _) {
-			IngredientSpawner.Instance.SpawnIngredientObjectAsync(_randomizedIngredientTypeList[3]);
+			SpawnIngredientWithIndex(3);
 		}
 
 		private void OnDiscardPerformed(InputAction.CallbackContext _) {
 			IngredientSpawner.Instance.DespawnAllIngredientObjects();
+		}
+
+		public void SpawnIngredientWithIndex(int index) {
+			IngredientSpawner.Instance.SpawnIngredientObjectAsync(_randomizedIngredientTypeList[index]);
 		}
 	}
 }
