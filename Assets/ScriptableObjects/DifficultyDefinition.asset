@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _difficulties:
   - NeededIngredients: 1
-    SuccessfulDrinksToClear: 1
-    TimeLimit: 60
-  - NeededIngredients: 1
-    SuccessfulDrinksToClear: 1
-    TimeLimit: 60
-  - NeededIngredients: 1
-    SuccessfulDrinksToClear: 1
-    TimeLimit: 60
-  - NeededIngredients: 1
-    SuccessfulDrinksToClear: 1
-    TimeLimit: 60
-  - NeededIngredients: 1
-    SuccessfulDrinksToClear: 1
-    TimeLimit: 60
+    SuccessfulDrinksToClear: 5
+    TimeLimit: 15
+  - NeededIngredients: 2
+    SuccessfulDrinksToClear: 5
+    TimeLimit: 10
+  - NeededIngredients: 3
+    SuccessfulDrinksToClear: 5
+    TimeLimit: 8
+  - NeededIngredients: 4
+    SuccessfulDrinksToClear: 5
+    TimeLimit: 7
+  - NeededIngredients: 5
+    SuccessfulDrinksToClear: 5
+    TimeLimit: 5

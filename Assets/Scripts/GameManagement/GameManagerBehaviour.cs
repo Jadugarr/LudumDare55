@@ -4,6 +4,9 @@ using PotatoFinch.LudumDare55.Extensions;
 using PotatoFinch.LudumDare55.GameEvents;
 using PotatoFinch.LudumDare55.Ingredients;
 using PotatoFinch.LudumDare55.Orders;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = Unity.Mathematics.Random;
@@ -52,9 +55,18 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			_inputActions.Summoning.Ingredient4.performed += OnIngredient4Performed;
 			_inputActions.Summoning.DiscardIngredients.performed += OnDiscardPerformed;
 			_inputActions.Summoning.CheckOrder.performed += OnCheckOrderPerformed;
+			_inputActions.Summoning.QuitGame.performed += OnQuitGamePerformed;
 			GameEventManager.Instance.AddListener<GameLostEvent>(OnGameLostEvent);
 			GameEventManager.Instance.AddListener<GameWonEvent>(OnGameWonEvent);
 			GameEventManager.Instance.AddListener<RestartGameEvent>(OnGameRestartEvent);
+		}
+
+		private void OnQuitGamePerformed(InputAction.CallbackContext _) {
+#if UNITY_EDITOR
+			EditorApplication.isPlaying = false;
+#else
+			Application.Quit();
+#endif
 		}
 
 		private void RemoveListeners() {
@@ -63,6 +75,8 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			_inputActions.Summoning.Ingredient3.performed -= OnIngredient3Performed;
 			_inputActions.Summoning.Ingredient4.performed -= OnIngredient4Performed;
 			_inputActions.Summoning.DiscardIngredients.performed -= OnDiscardPerformed;
+			_inputActions.Summoning.CheckOrder.performed -= OnCheckOrderPerformed;
+			_inputActions.Summoning.QuitGame.performed -= OnQuitGamePerformed;
 			GameEventManager.Instance.RemoveListener<GameLostEvent>(OnGameLostEvent);
 			GameEventManager.Instance.RemoveListener<GameWonEvent>(OnGameWonEvent);
 			GameEventManager.Instance.RemoveListener<RestartGameEvent>(OnGameRestartEvent);
@@ -99,7 +113,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			if (!_gameRunning) {
 				return;
 			}
-			
+
 			IngredientSpawner.Instance.DespawnAllIngredientObjects();
 			_currentIngredients.Clear();
 		}
@@ -108,13 +122,17 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			if (!_gameRunning) {
 				return;
 			}
-			
+
 			var randomizedIngredientType = _randomizedIngredientTypeList[index];
 			_currentIngredients.Add(randomizedIngredientType);
 			IngredientSpawner.Instance.SpawnIngredientObjectAsync(randomizedIngredientType);
 		}
 
 		private void OnCheckOrderPerformed(InputAction.CallbackContext _) {
+			CheckOrder();
+		}
+
+		public void CheckOrder() {
 			OrderedDrink currentOrder = new OrderedDrink(_currentIngredients);
 			var result = OrderManager.Instance.CheckOrder(currentOrder);
 
@@ -122,7 +140,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			if (!result) {
 				return;
 			}
-			
+
 			GetNewOrder();
 		}
 
