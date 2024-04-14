@@ -13,6 +13,9 @@ using Random = Unity.Mathematics.Random;
 
 namespace PotatoFinch.LudumDare55.GameManagement {
 	public class GameManagerBehaviour : MonoBehaviour {
+		[SerializeField] private AudioSource _audioSource;
+		[SerializeField] private AudioClip[] _summonSounds;
+		
 		public static GameManagerBehaviour Instance => _instance;
 		private static GameManagerBehaviour _instance;
 
@@ -126,6 +129,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			var randomizedIngredientType = _randomizedIngredientTypeList[index];
 			_currentIngredients.Add(randomizedIngredientType);
 			IngredientSpawner.Instance.SpawnIngredientObjectAsync(randomizedIngredientType);
+			PlayRandomSummonSound();
 		}
 
 		private void OnCheckOrderPerformed(InputAction.CallbackContext _) {
@@ -157,6 +161,11 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			DiscardDrink();
 			OrderManager.Instance.Reset();
 			OrderManager.Instance.GenerateOrder();
+		}
+
+		private void PlayRandomSummonSound() {
+			_audioSource.clip = _summonSounds[_random.NextInt(_summonSounds.Length)];
+			_audioSource.Play();
 		}
 	}
 }

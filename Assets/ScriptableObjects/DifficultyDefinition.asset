@@ -15,7 +15,7 @@ MonoBehaviour:
   _difficulties:
   - NeededIngredients: 1
     SuccessfulDrinksToClear: 5
-    TimeLimit: 15
+    TimeLimit: 20
   - NeededIngredients: 2
     SuccessfulDrinksToClear: 5
     TimeLimit: 10
