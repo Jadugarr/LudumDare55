@@ -1,17 +1,16 @@
-﻿using System;
-using PotatoFinch.LudumDare55.GameEvents;
-using TMPro;
+﻿using PotatoFinch.LudumDare55.GameEvents;
+using PotatoFinch.LudumDare55.Localization;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace PotatoFinch.LudumDare55.UiComponents {
 	public class RestartGameContainerBehaviour : MonoBehaviour {
-		[SerializeField] private TMP_Text _gameResultText;
+		[SerializeField] private LocalizedTextfield _gameResultText;
 		[SerializeField] private Button _restartGameButton;
 		[SerializeField] private GameObject _restartElementsContainer;
 
-		[SerializeField] private string _gameWonText;
-		[SerializeField] private string _gameLostText;
+		[SerializeField] private LocalizationKey _gameWonText;
+		[SerializeField] private LocalizationKey _gameLostText;
 
 		private RestartGameEvent _restartGameEvent = new();
 
@@ -35,12 +34,12 @@ namespace PotatoFinch.LudumDare55.UiComponents {
 		}
 
 		private void OnGameLostEvent(GameLostEvent _) {
-			_gameResultText.text = _gameLostText;
+			_gameResultText.LocalizeText(_gameLostText);
 			_restartElementsContainer.SetActive(true);
 		}
 
 		private void OnGameWonEvent(GameWonEvent _) {
-			_gameResultText.text = _gameWonText;
+			_gameResultText.LocalizeText(_gameWonText);
 			_restartElementsContainer.SetActive(true);
 		}
 	}

@@ -1,23 +1,19 @@
 ﻿using UnityEngine;
 
 namespace PotatoFinch.LudumDare55.Localization {
-	[CreateAssetMenu(fileName = "LocalizationKey", menuName = "ScriptableObjects/Localization/Key")]
+	[CreateAssetMenu(fileName = "LocalizationKey", menuName = "ScriptableObjects/Localization/LocalizationKey", order = 0)]
 	public class LocalizationKey : ScriptableObject {
-		[SerializeField] private LocalizationData[] _localizationDatas;
+		[SerializeField] private TranslationData[] _translations;
 
-		public bool TryGetTextByLanguageCode(LanguageCode languageCode, out string localizedText) {
-			localizedText = string.Empty;
-			
-			foreach (var localizationData in _localizationDatas) {
-				if (localizationData.LanguageCode != languageCode) {
-					continue;
-				}
+		public bool TryGetTranslation(LanguageCodeValue languageCodeValue, out string translation) {
+			translation = string.Empty;
 
-				localizedText = localizationData.Text;
+			foreach (var translationData in _translations) {
+				if (translationData.LanguageCodeValue != languageCodeValue) continue;
+				translation = translationData.Translation;
 				return true;
 			}
 
-			Debug.LogError($"No localization defined for language {languageCode} in key {name}");
 			return false;
 		}
 	}

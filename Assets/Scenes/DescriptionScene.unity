@@ -435,6 +435,7 @@ GameObject:
   - component: {fileID: 377157922}
   - component: {fileID: 377157921}
   - component: {fileID: 377157920}
+  - component: {fileID: 377157924}
   m_Layer: 5
   m_Name: DescriptionText
   m_TagString: Untagged
@@ -632,6 +633,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377157918}
   m_CullTransparentMesh: 1
+--- !u!114 &377157924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377157918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99c5c05abf1a1a4a8eceb892f8e6466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textfield: {fileID: 377157922}
+  _preDefinedKey: {fileID: 0}
 --- !u!1 &1054255579
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a01ac11875444483a4c1b7e99d813bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _descriptionText: {fileID: 377157922}
+  _descriptionText: {fileID: 377157924}
   _textsToShow:
   - Hey! <waitfor> <wave a=0.3>Psst...
   - I know exactly what you're thinking...
@@ -692,6 +707,17 @@ MonoBehaviour:
     it out.
   - And you better make it quick.
   - What are you waiting for? <shake>Get to it!
+  _localizationKeys:
+  - {fileID: 11400000, guid: cbaf05ebf7913644785faacbf749b26a, type: 2}
+  - {fileID: 11400000, guid: ac6f0576bb8b8a947bac4c5a903574b9, type: 2}
+  - {fileID: 11400000, guid: b2fc0667b7190ca418916fc178ac7cbf, type: 2}
+  - {fileID: 11400000, guid: 55f9d8706564f51449c91064d9aed169, type: 2}
+  - {fileID: 11400000, guid: 3f20eb6a14f08b548981160b84187ad8, type: 2}
+  - {fileID: 11400000, guid: 8688fad2411c7684aa705e2d586ae73b, type: 2}
+  - {fileID: 11400000, guid: eb71d428833893a4291f1dbcdc255d80, type: 2}
+  - {fileID: 11400000, guid: f3ee26c4be648df4c8ec6fee9fa4e2aa, type: 2}
+  - {fileID: 11400000, guid: 495b3b1ce02d50546bd6f0e8c8de542f, type: 2}
+  - {fileID: 11400000, guid: 394c00f0d97fe524db9ae722de738e89, type: 2}
 --- !u!1 &1609733831
 GameObject:
   m_ObjectHideFlags: 0

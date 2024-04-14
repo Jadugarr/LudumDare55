@@ -1,12 +1,13 @@
-﻿using TMPro;
+﻿using PotatoFinch.LudumDare55.Localization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace PotatoFinch.LudumDare55.GameManagement {
 	public class DescriptionManager : MonoBehaviour {
-		[SerializeField] private TMP_Text _descriptionText;
+		[SerializeField] private LocalizedTextfield _descriptionText;
 		[SerializeField] private string[] _textsToShow;
+		[SerializeField] private LocalizationKey[] _localizationKeys;
 
 		private int _currentTextIndex;
 
@@ -26,7 +27,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 		private void OnNextDescriptionPerformed(InputAction.CallbackContext _) {
 			_currentTextIndex++;
 
-			if (_currentTextIndex >= _textsToShow.Length) {
+			if (_currentTextIndex >= _localizationKeys.Length) {
 				SceneManager.LoadScene("GameScene");
 				return;
 			}
@@ -35,7 +36,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 		}
 
 		private void ShowText(int index) {
-			_descriptionText.text = _textsToShow[index];
+			_descriptionText.LocalizeText(_localizationKeys[index]);
 		}
 	}
 }
