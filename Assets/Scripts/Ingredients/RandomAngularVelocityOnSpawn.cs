@@ -11,6 +11,7 @@ namespace PotatoFinch.LudumDare55.Ingredients {
 			random.NextInt(5);
 
 			_rigidbody.angularVelocity = random.NextFloat(-359, 359);
+			_rigidbody.velocity = new Vector2(0f, -15f);
 		}
 	}
 }
