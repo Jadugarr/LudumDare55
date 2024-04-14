@@ -14,7 +14,10 @@ using Random = Unity.Mathematics.Random;
 namespace PotatoFinch.LudumDare55.GameManagement {
 	public class GameManagerBehaviour : MonoBehaviour {
 		[SerializeField] private AudioSource _audioSource;
+		[SerializeField] private AudioSource _orderResultSource;
 		[SerializeField] private AudioClip[] _summonSounds;
+		[SerializeField] private AudioClip _correctClip;
+		[SerializeField] private AudioClip _wrongClip;
 		
 		public static GameManagerBehaviour Instance => _instance;
 		private static GameManagerBehaviour _instance;
@@ -141,6 +144,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 			var result = OrderManager.Instance.CheckOrder(currentOrder);
 
 			DiscardDrink();
+			PlayOrderResultSound(result);
 			if (!result) {
 				return;
 			}
@@ -166,6 +170,11 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 		private void PlayRandomSummonSound() {
 			_audioSource.clip = _summonSounds[_random.NextInt(_summonSounds.Length)];
 			_audioSource.Play();
+		}
+
+		private void PlayOrderResultSound(bool isCorrect) {
+			_orderResultSource.clip = isCorrect ? _correctClip : _wrongClip;
+			_orderResultSource.Play();
 		}
 	}
 }

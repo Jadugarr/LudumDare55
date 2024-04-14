@@ -22,7 +22,7 @@ namespace PotatoFinch.LudumDare55.GameManagement {
 		}
 
 		private void OnStartGameButtonClicked() {
-			SceneManager.LoadScene("GameScene");
+			SceneManager.LoadScene("DescriptionScene");
 		}
 
 		private void OnQuitGameButtonClicked() {

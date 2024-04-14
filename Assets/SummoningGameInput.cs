@@ -89,6 +89,15 @@ public partial class @SummoningGameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextDescription"",
+                    ""type"": ""Button"",
+                    ""id"": ""4fd53dee-1a3a-4337-8a82-ef86617b005f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -168,6 +177,17 @@ public partial class @SummoningGameInput: IInputActionCollection2, IDisposable
                     ""action"": ""QuitGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65a873ad-2a79-42ca-9f7e-970d7a6ea737"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextDescription"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -183,6 +203,7 @@ public partial class @SummoningGameInput: IInputActionCollection2, IDisposable
         m_Summoning_DiscardIngredients = m_Summoning.FindAction("DiscardIngredients", throwIfNotFound: true);
         m_Summoning_CheckOrder = m_Summoning.FindAction("CheckOrder", throwIfNotFound: true);
         m_Summoning_QuitGame = m_Summoning.FindAction("QuitGame", throwIfNotFound: true);
+        m_Summoning_NextDescription = m_Summoning.FindAction("NextDescription", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @SummoningGameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Summoning_DiscardIngredients;
     private readonly InputAction m_Summoning_CheckOrder;
     private readonly InputAction m_Summoning_QuitGame;
+    private readonly InputAction m_Summoning_NextDescription;
     public struct SummoningActions
     {
         private @SummoningGameInput m_Wrapper;
@@ -262,6 +284,7 @@ public partial class @SummoningGameInput: IInputActionCollection2, IDisposable
         public InputAction @DiscardIngredients => m_Wrapper.m_Summoning_DiscardIngredients;
         public InputAction @CheckOrder => m_Wrapper.m_Summoning_CheckOrder;
         public InputAction @QuitGame => m_Wrapper.m_Summoning_QuitGame;
+        public InputAction @NextDescription => m_Wrapper.m_Summoning_NextDescription;
         public InputActionMap Get() { return m_Wrapper.m_Summoning; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -292,6 +315,9 @@ public partial class @SummoningGameInput: IInputActionCollection2, IDisposable
             @QuitGame.started += instance.OnQuitGame;
             @QuitGame.performed += instance.OnQuitGame;
             @QuitGame.canceled += instance.OnQuitGame;
+            @NextDescription.started += instance.OnNextDescription;
+            @NextDescription.performed += instance.OnNextDescription;
+            @NextDescription.canceled += instance.OnNextDescription;
         }
 
         private void UnregisterCallbacks(ISummoningActions instance)
@@ -317,6 +343,9 @@ public partial class @SummoningGameInput: IInputActionCollection2, IDisposable
             @QuitGame.started -= instance.OnQuitGame;
             @QuitGame.performed -= instance.OnQuitGame;
             @QuitGame.canceled -= instance.OnQuitGame;
+            @NextDescription.started -= instance.OnNextDescription;
+            @NextDescription.performed -= instance.OnNextDescription;
+            @NextDescription.canceled -= instance.OnNextDescription;
         }
 
         public void RemoveCallbacks(ISummoningActions instance)
@@ -343,5 +372,6 @@ public partial class @SummoningGameInput: IInputActionCollection2, IDisposable
         void OnDiscardIngredients(InputAction.CallbackContext context);
         void OnCheckOrder(InputAction.CallbackContext context);
         void OnQuitGame(InputAction.CallbackContext context);
+        void OnNextDescription(InputAction.CallbackContext context);
     }
 }
